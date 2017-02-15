@@ -18,6 +18,10 @@
 		vertical-align: baseline;
 	}
 
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
 	body {
 		line-height: 1;
 	}
@@ -26,17 +30,31 @@
 		list-style: none;
 	}
 
+	blockquote, q {
+		quotes: none;
+	}
+
+	blockquote:before, blockquote:after, q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
 	body {
 		-webkit-text-size-adjust: none;
 	}
-
+	
 /* Box Model */
 
 	*, *:before, *:after {
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
-	}
+	}	
 
 /* Basic */
 
@@ -46,6 +64,17 @@
 			min-width: 320px;
 		}
 
+	}
+	
+	body.is-loading *, body.is-loading *:before, body.is-loading *:after {
+		-moz-animation: none !important;
+		-webkit-animation: none !important;
+		-ms-animation: none !important;
+		animation: none !important;
+		-moz-transition: none !important;
+		-webkit-transition: none !important;
+		-ms-transition: none !important;
+		transition: none !important;
 	}
 
 	html {
@@ -60,38 +89,15 @@
 		background-size: 100px 100px, cover, cover;
 		background-position: top left, center center, bottom center;
 		background-attachment: fixed, fixed, fixed;
+		overflow: hidden;
 	}
 
-		body:after {
-			content: '';
-			display: block;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: inherit;
-			opacity: 0;
-			z-index: 1;
-			background-color: #ffffff;
-			background-image: url("images/overlay.png");
-			background-repeat: repeat, no-repeat;
-			background-size: 100px 100px, cover;
-			background-position: top left, center center;
-			-moz-transition: opacity 1.75s ease-out;
-			-webkit-transition: opacity 1.75s ease-out;
-			-ms-transition: opacity 1.75s ease-out;
-			transition: opacity 1.75s ease-out;
-		}
-
-		body.is-loading:after {
-			opacity: 1;
-		}
 
 /* Type */
 
-	body {
+	body, input, select, textarea {
 		#color: #ffffff;
-		color: #1f242a;
+		color: #111820; /* Pallette Blue */
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 14pt;
 		font-weight: 300;
@@ -124,15 +130,42 @@
 	p {
 		margin: 0 0 1.5em 0;
 	}
-
-	h1 {
-		font-size: 1.5em;
-		letter-spacing: 0.18em;
-		margin: 0.9em 0.9em 0.9em 0.9em;
-		#color: #ffffff;
-		color: #1f242a;
+	
+	h1, h2, h3, h4, h5, h6 {
+		color: #111820; /* Pallette Blue */
 		line-height: 1.5;
 		margin: 0 0 0.75em 0;
+	}
+
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+	h1 {
+		font-size: 1.85em;
+		letter-spacing: 0.22em;
+		margin: 0 0 0.525em 0;
+	}
+
+	h2 {
+		font-size: 1.25em;
+	}
+
+	h3 {
+		font-size: 1em;
+	}
+
+	h4 {
+		font-size: 1em;
+	}
+
+	h5 {
+		font-size: 1em;
+	}
+
+	h6 {
+		font-size: 1em;
 	}
 
 	@media screen and (max-width: 480px) {
@@ -142,9 +175,49 @@
 		}
 
 	}
+	
+/* Icon */
+
+	.icon {
+		text-decoration: none;
+		position: relative;
+		border-bottom: none;
+	}
+
+		.icon:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none !important;
+		}
+
+		.icon > .label {
+			display: none;
+		}
 
 /* List */
 
+	ol {
+		list-style: decimal;
+		margin: 0 0 1.5em 0;
+		padding-left: 1.25em;
+	}
+
+		ol li {
+			padding-left: 0.25em;
+		}
+
+	ul {
+		list-style: disc;
+		margin: 0 0 1.5em 0;
+		padding-left: 1em;
+	}
+	
+		ul li {
+			padding-left: 0.5em;
+		}
 
 		ul.icons {
 			cursor: default;
@@ -160,53 +233,19 @@
  
  
 				ul.icons li a {
-					#text-decoration: none;
-					#position: relative;
+					text-decoration: none;
+					position: relative;
 					display: block;
-					#width: 3.75em;
-					#height: 3.75em;
-					#border-radius: 100%;
-					#border: solid 1px #c8cccf;
-					#line-height: 3.75em;
-					#overflow: hidden;
+					width: 3.75em;
+					height: 3.75em;
+					border-radius: 100%;
+					border: solid 1px #c8cccf;
+					line-height: 3.75em;
+					overflow: hidden;
 					text-align: center;
-					#text-indent: .25em;
-					#white-space: nowrap;
+					text-indent: .25em;
+					white-space: nowrap;
 				}
-
-					ul.icons li a:before {
-						#-moz-osx-font-smoothing: grayscale;
-						#-webkit-font-smoothing: antialiased;
-						#font-family: FontAwesome;
-						#font-style: normal;
-						#font-weight: normal;
-						#text-transform: none !important;
-					}
-
-					ul.icons li a:before {
-						#color: #ffffff;
-						#text-shadow: 1.25px 0px 0px #c8cccf, -1.25px 0px 0px #c8cccf, 0px 1.25px 0px #c8cccf, 0px -1.25px 0px #c8cccf;
-					}
-
-					ul.icons li a:hover:before {
-						#text-shadow: 1.25px 0px 0px #ff7496, -1.25px 0px 0px #ff7496, 0px 1.25px 0px #ff7496, 0px -1.25px 0px #ff7496;
-					}
-
-					ul.icons li a:before {
-						position: absolute;
-						#top: 0;
-						#left: 0;
-						#width: inherit;
-						#height: inherit;
-						#font-size: 1.85rem;
-						#line-height: inherit;
-						#text-align: center;
-						#text-indent: 0;
-					}
-
-					ul.icons li a:hover {
-						#border-color: #ff7496;
-					}
 
 			@media screen and (max-width: 480px) {
 
@@ -216,22 +255,6 @@
 
 			}
 
-		ul.actions {
-			cursor: default;
-			list-style: none;
-			padding-left: 0;
-		}
-
-			ul.actions li {
-				display: inline-block;
-				padding: 0 0.75em 0 0;
-				vertical-align: middle;
-			}
-
-				ul.actions li:last-child {
-					padding-right: 0;
-				}
-
 /* Main */
 
 	#main {
@@ -239,12 +262,11 @@
 		max-width: 100%;
 		min-width: 27em;
 		padding: 4em 3em 3em 3em ;
-		#background: #1f242a;
-		background: #ffffff;
-		border-radius: 1px #ffffff;
-		border-radius: 10px;
+		background: #D8CFC2; /* Pallette Cream */
+		border-radius: 1px #D8CFC2; /* Pallette Cream */
+		border-radius: 5px;
 		cursor: default;
-		opacity: 0.80;
+		opacity: 0.90;
 		text-align: center;
 		-moz-transform-origin: 50% 50%;
 		-webkit-transform-origin: 50% 50%;
@@ -270,7 +292,7 @@
 				display: block;
 				margin: 0 auto;
 				border-radius: 100%;
-				box-shadow: 0 0 0 1.5em #ffffff;
+				box-shadow: 0 0 0 1.5em #D8CFC2; /* Pallette Cream */
 			}
 
 			#main .avatar:before {
@@ -282,8 +304,7 @@
 				width: calc(100% + 6em);
 				height: 1px;
 				z-index: -1;
-				background: #1f242a;
-				#background: #ffffff;
+				background: #111820; /* Pallette Blue */
 			}
 
 		@media screen and (max-width: 480px) {
@@ -299,14 +320,6 @@
 					width: calc(100% + 4em);
 				}
 
-		}
-
-		body.is-loading #main {
-			opacity: 0;
-			-moz-transform: rotateX(15deg);
-			-webkit-transform: rotateX(15deg);
-			-ms-transform: rotateX(15deg);
-			transform: rotateX(15deg);
 		}
 
 /* Buttons */ 
